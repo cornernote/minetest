@@ -42,6 +42,12 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include <GLES/gl.h>
 #endif
 
+// BEGIN WIKI IMAGE EXTRACT
+#include <string>
+#include <iostream>
+#include <algorithm>
+// END WIKI IMAGE EXTRACT
+
 /*
 	ItemDefinition
 */
@@ -418,6 +424,30 @@ public:
 					cc->inventory_texture =
 						tsrc->getTexture(f.tiledef[0].name);
 				}
+
+                                // BEGIN WIKI IMAGE EXTRACT
+                                infostream<<"WIKI IMAGE EXTRACT: name = '"<<name<<"'"<<std::endl;
+                                IrrlichtDevice *device = tsrc->getDevice();
+                                video::IVideoDriver *driver = device->getVideoDriver();
+                                if (cc->inventory_texture != NULL) {
+                                        video::IImage* wiki_image = driver->createImageFromData (
+                                                cc->inventory_texture->getColorFormat(),
+                                                cc->inventory_texture->getSize(),
+                                                cc->inventory_texture->lock(),
+                                                false  //copy mem
+                                        );
+                                        cc->inventory_texture->unlock();
+                                        if(wiki_image != NULL) {
+                                                std::string se(name);
+                                                std::replace(se.begin(), se.end(), ':', '_');
+                                                irr::c8 filename[250];
+                                                snprintf(filename, 250, "itemcubes/%s.png", se.c_str());
+                                                driver->writeImageToFile(wiki_image, filename);
+                                                wiki_image->drop();
+                                        }
+	                        }
+        	                // END WIKI IMAGE EXTRACT
+
 			}
 
 			/*
