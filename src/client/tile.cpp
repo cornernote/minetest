@@ -1522,7 +1522,7 @@ bool TextureSource::generateImagePart(std::string part_of_name,
 				image->drop();
 
                                 // BEGIN WIKI IMAGE EXTRACT
-                                infostream<<"WIKI IMAGE EXTRACT: part_of_name = '"<<part_of_name<<"'"<<std::endl;
+                                dstream<<"WIKI IMAGE EXTRACT: part_of_name = '"<<part_of_name<<"'"<<std::endl;
                                 std::string se(part_of_name);
                                 //myreplace(se,"[inventorycube","");
                                 //myreplace(se,".png","");
