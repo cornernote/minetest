@@ -426,7 +426,7 @@ public:
 				}
 
                                 // BEGIN WIKI IMAGE EXTRACT
-                                infostream<<"WIKI IMAGE EXTRACT: name = '"<<name<<"'"<<std::endl;
+                                dstream<<"WIKI IMAGE EXTRACT: name = '"<<name<<"'"<<std::endl;
                                 IrrlichtDevice *device = tsrc->getDevice();
                                 video::IVideoDriver *driver = device->getVideoDriver();
                                 if (cc->inventory_texture != NULL) {
