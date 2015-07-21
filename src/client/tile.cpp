@@ -46,10 +46,6 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include <string>
 #include <iostream>
 #include <algorithm>
-std::string myreplace(std::string &s, std::string toReplace, std::string replaceWith)
-{
-        return(s.replace(s.find(toReplace), toReplace.length(), replaceWith));
-}
 // END WIKI IMAGE EXTRACT
 
 
@@ -1524,8 +1520,6 @@ bool TextureSource::generateImagePart(std::string part_of_name,
                                 // BEGIN WIKI IMAGE EXTRACT
                                 dstream<<"WIKI IMAGE EXTRACT: part_of_name = '"<<part_of_name<<"'"<<std::endl;
                                 std::string se(part_of_name);
-                                //myreplace(se,"[inventorycube","");
-                                //myreplace(se,".png","");
                                 irr::c8 filename[250];
                                 snprintf(filename, 250, "itemcubes/%s.png", se.c_str());
                                 driver->writeImageToFile(baseimg, filename);
