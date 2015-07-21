@@ -42,6 +42,17 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include <GLES/gl.h>
 #endif
 
+// BEGIN WIKI IMAGE EXTRACT
+#include <string>
+#include <iostream>
+#include <algorithm>
+std::string myreplace(std::string &s, std::string toReplace, std::string replaceWith)
+{
+        return(s.replace(s.find(toReplace), toReplace.length(), replaceWith));
+}
+// END WIKI IMAGE EXTRACT
+
+
 /*
 	A cache from texture name to texture path
 */
@@ -1509,6 +1520,17 @@ bool TextureSource::generateImagePart(std::string part_of_name,
 			if (image) {
 				image->copyTo(baseimg);
 				image->drop();
+
+                                // BEGIN WIKI IMAGE EXTRACT
+                                infostream<<"WIKI IMAGE EXTRACT: part_of_name = '"<<part_of_name<<"'"<<std::endl;
+                                std::string se(part_of_name);
+                                //myreplace(se,"[inventorycube","");
+                                //myreplace(se,".png","");
+                                irr::c8 filename[250];
+                                snprintf(filename, 250, "itemcubes/%s.png", se.c_str());
+                                driver->writeImageToFile(baseimg, filename);
+                                // END WIKI IMAGE EXTRACT
+
 			}
 		}
 		/*
